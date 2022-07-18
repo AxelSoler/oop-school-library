@@ -1,7 +1,4 @@
-class < Person
-  attr_reader :id
-  attr_accessor :name, :age
-
+class Student < Person
   def initialize(classroom)
     super(name, age, parent_permission)
     @classroom = classroom
