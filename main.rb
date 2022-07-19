@@ -29,4 +29,14 @@ class Main
       select_option
     end
   end
+
+  def run
+    list_menu
+  end
 end
+
+def main
+  App.new.run
+end
+
+main

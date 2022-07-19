@@ -8,16 +8,22 @@ class App
   attr_reader :people, :books
 
   def initialize
-    @people = []
+    @persons = []
     @books = []
   end
 
-  def list_books(books)
-    puts books
+  def list_books
+    @books.each do |book|
+      puts "Title: #{book.title}, Author: #{book.author}"
+    end
+    list_menu
   end
 
-  def list_persons(person)
-    puts person
+  def list_persons
+    @persons.each do |person|
+      puts "#{person.class} name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    list_menu
   end
 
   def create_person(person)
