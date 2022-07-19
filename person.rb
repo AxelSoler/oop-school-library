@@ -1,6 +1,7 @@
 require_relative './nameable'
 require_relative './capitalize_decorator'
 require_relative './trimmer_decorator'
+require_relative './rental'
 
 class Person < Nameable
   attr_reader :id, :rental
@@ -29,5 +30,10 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  def add_rental(book, date)
+    # *The person itself should be sent as a parameter to create the new rental achieving the 'has-many' association
+    Rental.new(date, book, self)
   end
 end
