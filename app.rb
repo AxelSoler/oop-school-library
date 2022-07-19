@@ -75,7 +75,23 @@ class App
   end
 
   def create_rental(rental)
-    Rental.new(rental)
+    puts 'Select a book from the following list by number'
+    @books.each do |book, index|
+      puts "#{index}) title: #{book.title}, Author: #{book.author}"
+    end
+    selected_book = gets.chomp
+    puts ''
+    puts 'Select a person from the following list by number'
+    @persons.each do |person, index|
+      puts "#{index}) #{person.class} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    selected_person = gets.chomp
+    puts''
+    puts 'Date: '
+    selected_date = gets.chomp
+    Rental.new(selected_date, selected_book, selected_person)
+    puts 'Rental created successfully'
+    list_menu
   end
 
   def list_rentals(rental)
