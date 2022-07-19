@@ -21,7 +21,7 @@ class App
 
   def list_persons
     @persons.each do |person|
-      puts "#{person.class} name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      puts "#{person.class} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     list_menu
   end
@@ -94,7 +94,13 @@ class App
     list_menu
   end
 
-  def list_rentals(rental)
-    puts rental
+  def list_rentals
+    puts 'ID of person: '
+    selected_person_id = gets.chomp
+    puts 'Rentals: '
+    @person.rentals.each do |rental|
+      puts "Date: #{rental.date}, Book: #{rental.book.name} by: #{rental.book.author}"
+    end
+    list_menu
   end
 end
