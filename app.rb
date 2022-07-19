@@ -63,8 +63,15 @@ class App
     puts 'Person created successfully'
   end
 
-  def create_book(book)
-    Book.new(book)
+  def create_book
+    puts 'Title: '
+    selected_title = gets.chomp
+    puts 'Author: '
+    selected_author = gets.chomp
+    book = Book.new(selected_title, selected_author)
+    @books.push(book)
+    puts 'Book created successfully'
+    list_menu
   end
 
   def create_rental(rental)
