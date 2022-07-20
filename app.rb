@@ -14,7 +14,6 @@ class App
   end
 
   def list_menu
-    puts 'Welcome to School Library App'
     puts ''
     puts 'Please choose an option by enterin a number'
     puts '1 - List all books'
@@ -43,6 +42,7 @@ class App
   end
 
   def run
+    puts 'Welcome to School Library App'
     list_menu
     select_option
   end
@@ -52,13 +52,15 @@ class App
       puts "Title: #{book.title}, Author: #{book.author}"
     end
     list_menu
+    select_option
   end
 
   def list_persons
     @persons.each do |person|
-      puts "#{person.class} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     list_menu
+    select_option
   end
 
   def create_person
@@ -72,6 +74,7 @@ class App
       create_person
     end
     list_menu
+    select_option
   end
 
   def create_student
@@ -107,6 +110,7 @@ class App
     @books.push(book)
     puts 'Book created successfully'
     list_menu
+    select_option
   end
 
   def create_rental
@@ -127,6 +131,7 @@ class App
     Rental.new(selected_date, selected_book, selected_person)
     puts 'Rental created successfully'
     list_menu
+    select_option
   end
 
   def list_rentals
@@ -145,5 +150,6 @@ class App
       puts "Date: #{rental.date}, Book: #{rental.book.name} by: #{rental.book.author}"
     end
     list_menu
+    select_option
   end
 end
