@@ -7,7 +7,7 @@ class Person < Nameable
   attr_reader :id, :rental
   attr_accessor :name, :age
 
-  def initialize(age, name = 'Unknown', parent_permission = true)
+  def initialize(age, name, parent_permission)
     super()
     @id = Random.rand(1..1000)
     @age = age
@@ -33,7 +33,6 @@ class Person < Nameable
   end
 
   def add_rental(book, date)
-    # *The person itself should be sent as a parameter to create the new rental achieving the 'has-many' association
     Rental.new(date, book, self)
   end
 end

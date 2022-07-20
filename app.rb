@@ -25,7 +25,7 @@ class App
     puts '7 - Exit'
   end
 
-  def select_option
+  def select_option # rubocop:disable Metrics/CyclomaticComplexity
     selected = gets.chomp
     case selected
     when '1' then list_books
@@ -91,12 +91,12 @@ class App
 
   def create_teacher
     puts 'Age: '
-    selected_age = gets.chomp
+    teacher_age = gets.chomp
     puts 'Name: '
-    selected_name = gets.chomp
+    teacher_name = gets.chomp
     puts 'Specialization: '
-    selected_specialization = gets.chomp
-    teacher = Teacher.new(selected_specialization, selected_name, selected_age)
+    teacher_specialization = gets.chomp
+    teacher = Teacher.new(teacher_age, teacher_name, teacher_specialization)
     @persons.push(teacher)
     puts 'Person created successfully'
   end
@@ -139,16 +139,13 @@ class App
     @persons.each do |person|
       puts "#{person.class} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
-    puts 'ID of person: '
+    puts 'Select ID of person: '
     selected_person_id = gets.chomp.to_i
-    @persons.each do |person|
-      if person.id = selected_person_id
-        element = person.id
-      end
-    end
     puts 'Rentals: '
-    element.rentals.each do |rental|
-      puts "Date: #{rental.date}, Book: #{rental.book.name} by: #{rental.book.author}"
+    @rentals.each do |rental|
+      if rental.person.id == selected_person_id
+        puts "Date: #{rental.date}, Book: #{rental.book.title} by: #{rental.book.author}"
+      end
     end
     list_menu
     select_option
