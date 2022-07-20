@@ -118,17 +118,18 @@ class App
     @books.each_with_index do |book, index|
       puts "#{index}) title: #{book.title}, Author: #{book.author}"
     end
-    selected_book = gets.chomp
+    index_book = gets.chomp
     puts ''
     puts 'Select a person from the following list by number'
     @persons.each_with_index do |person, index|
       puts "#{index}) #{person.class} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
-    selected_person = gets.chomp
+    index_person = gets.chomp
     puts ''
     puts 'Date: '
     selected_date = gets.chomp
-    Rental.new(selected_date, selected_book, selected_person)
+    rental = Rental.new(selected_date, @books[index_book.to_i], @persons[index_person.to_i])
+    @rentals.push(rental)
     puts 'Rental created successfully'
     list_menu
     select_option
