@@ -84,7 +84,7 @@ class App
     selected_name = gets.chomp
     puts 'Has parent permission? [Y/N]: '
     selected_permission = gets.chomp.downcase == 'y'
-    student = Student.new(selected_name, selected_age, selected_permission)
+    student = Student.new(selected_age, selected_name, selected_permission)
     @persons.push(student)
     puts 'Person created successfully'
   end
@@ -96,7 +96,7 @@ class App
     selected_name = gets.chomp
     puts 'Specialization: '
     selected_specialization = gets.chomp
-    teacher = Teacher.new(selected_name, selected_age, selected_specialization)
+    teacher = Teacher.new(selected_specialization, selected_name, selected_age)
     @persons.push(teacher)
     puts 'Person created successfully'
   end
@@ -115,13 +115,13 @@ class App
 
   def create_rental
     puts 'Select a book from the following list by number'
-    @books.each do |book, index|
+    @books.each_with_index do |book, index|
       puts "#{index}) title: #{book.title}, Author: #{book.author}"
     end
     selected_book = gets.chomp
     puts ''
     puts 'Select a person from the following list by number'
-    @persons.each do |person, index|
+    @persons.each_with_index do |person, index|
       puts "#{index}) #{person.class} Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     selected_person = gets.chomp
