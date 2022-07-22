@@ -28,8 +28,8 @@ class App
   def select_option # rubocop:disable Metrics/CyclomaticComplexity
     selected = gets.chomp
     case selected
-    when '1' then list_book
-    when '2' then list_person
+    when '1' then list_books
+    when '2' then list_persons
     when '3' then create_person
     when '4' then create_book
     when '5' then create_rental
@@ -48,7 +48,7 @@ class App
   end
 
   def list_books
-    @books.each do |book|
+    @persons.each do |book|
       puts "Title: #{book.title}, Author: #{book.author}"
     end
     list_menu
